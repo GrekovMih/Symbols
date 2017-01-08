@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+    <TITLE>Ширина и высота текста в пикселях</TITLE>
+    <script>
+
+
+        function str(text, fontfamily, fontsize)      //размер и тип шрифта
+        {
+            var str = document.createTextNode(text);
+            var str_size = Array();
+            var obj = document.createElement('A');
+            obj.style.fontSize = fontsize + 'px';
+            obj.style.fontFamily = fontfamily;
+            obj.style.margin = 0 + 'px';
+            obj.style.padding = 0 + 'px';
+            obj.appendChild(str);
+            document.body.appendChild(obj);
+            str_size[0] = obj.offsetWidth;
+            str_size[1] = obj.offsetHeight;
+            document.body.removeChild(obj);
+            console.log(str_size[0] + "x" + str_size[1]);
+        }
+
+
+        function str_size(fontfamily,fontsize)
+        {
+
+          var fontfamily=document.getElementById("fontfamily").value,
+              fontsize=document.getElementById("fontsize").value;
+
+
+           for(var i=0;  i<33; i++)
+           {
+
+
+            var  text=('А' + i);
+               str(text, fontfamily, fontsize);
+           }
+
+
+
+
+        }
+
+
+    </script>
+</HEAD>
+<BODY>Шрифт:
+<INPUT TYPE="text" NAME="fontfamily" id='fontfamily'> <br>
+Размер:
+<INPUT TYPE="text" NAME="fontsize" id='fontsize'><br>
+<INPUT TYPE="button" VALUE="Расчитать размеры" ONCLICK="str_size(fontfamily,fontsize)">
+</BODY>
+</HTML>
